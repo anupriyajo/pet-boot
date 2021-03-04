@@ -58,10 +58,10 @@ public class PetController {
     Pet replacePet(@RequestBody Pet newPet, @PathVariable Long id) {
 
         return repository.findById(id)
-            .map(employee -> {
-                employee.setName(newPet.getName());
-                employee.setAge(newPet.getAge());
-                return repository.save(employee);
+            .map(pet -> {
+                pet.setName(newPet.getName());
+                pet.setAge(newPet.getAge());
+                return repository.save(pet);
             })
             .orElseGet(() -> {
                 newPet.setId(id);
